@@ -14,7 +14,6 @@
       devShells.${system}.default = pkgs.mkShell {
         # Packages for development
         packages = with pkgs; [
-		clang
 		cmake
 
 		sqlite
