@@ -1,0 +1,6 @@
+[submodule "src/lib/SQLiteCpp"]
+	path = src/lib/SQLiteCpp
+	url = git@github.com:SRombauts/SQLiteCpp.git
+[submodule "src/lib/tabulate"]
+	path = src/lib/tabulate
+	url = git@github.com:p-ranav/tabulate.git
