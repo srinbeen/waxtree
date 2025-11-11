@@ -5,6 +5,9 @@
 #include <optional>
 #include <vector>
 #include <memory>
+#include <sstream>
+#include <algorithm>
+#include <iterator>
 
 using tableid_t = int64_t;
 
@@ -62,6 +65,14 @@ struct Artist {
     std::vector<std::weak_ptr<Vinyl>> vinyls;
     std::vector<std::weak_ptr<Track>> track_features;
     std::vector<std::weak_ptr<Work>> works;
+
+    Artist() = delete;
+    Artist(tableid_t id, const std::string& name, const std::string& sort_name) : id{id}, name{name}, sort_name{sort_name} {}
+    Artist(const std::string& name, const std::string& sort_name) : Artist{0, name, sort_name} {}
+    // Artist(const std::string& name) : Artist(name, _createSortName(name)) = delete;
+
+private:
+    // std::string _createSortName(const std::string& name);
 };
 
 struct Label {
@@ -69,12 +80,20 @@ struct Label {
     std::string name;
 
     std::vector<std::weak_ptr<Vinyl>> vinyls;
+
+    Label() = delete;
+    Label(tableid_t id, const std::string& name) : id{id}, name{name} {}
+    Label(const std::string& name) : Label{0, name} {}
 };
 struct Source {
     tableid_t id;
     std::string name;
 
     std::vector<std::weak_ptr<Vinyl>> vinyls;
+
+    Source() = delete;
+    Source(tableid_t id, const std::string& name) : id{id}, name{name} {}
+    Source(const std::string& name) : Source{0, name} {}
 };
 struct Tag {
     tableid_t id;
